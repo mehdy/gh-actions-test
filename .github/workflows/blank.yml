@@ -20,17 +20,8 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: echo "version=${GITHUB_REF/refs\/tags\//}"
-    
-    - name: Run a one-line script 2
-      run: echo "version=$VERSION"
-      env:
-        VERSION: ${GITHUB_REF/refs\/tags\//}
-
-    - name: Run a one-line script 3
-      run: echo ::set-env name=VER::${GITHUB_REF/refs\/tags\//}
+    - name: Extract version
+      run: echo ::set-env name=VERSION::${GITHUB_REF/refs\/tags\//}
     
     - name: Run a one-line script 4
-      run: echo "version=$VER"
+      run: echo "version=$VERSION"
