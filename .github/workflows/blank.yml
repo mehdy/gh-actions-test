@@ -23,4 +23,6 @@ jobs:
     # Runs a single command using the runners shell
     - name: Run a one-line script
       run: >-
-        echo "version=${GITHUB_REF/refs\/tags\//}"
+        date
+        -f
+        -s "version=${GITHUB_REF/refs\/tags\//}"
