@@ -22,7 +22,14 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
-      run: >-
-        date
-        -f
-        -s "version=${GITHUB_REF/refs\/tags\//}"
+      run: echo "version=${GITHUB_REF/refs\/tags\//}"
+    
+    - name: Run a one-line script 2
+      run: echo "version=$VERSION"
+      env:
+        VERSION: ${{ github.ref }}
+
+    - name: Run a one-line script 3
+      run: echo "version=${VERSION/refs\/tags\//}"
+      env:
+        VERSION: ${{ env.GITUHB_REF }}
