@@ -27,9 +27,10 @@ jobs:
     - name: Run a one-line script 2
       run: echo "version=$VERSION"
       env:
-        VERSION: ${{ github.ref }}
+        VERSION: ${GITHUB_REF/refs\/tags\//}
 
     - name: Run a one-line script 3
-      run: echo "version=${VERSION/refs\/tags\//}"
-      env:
-        VERSION: ${{ env.GITUHB_REF }}
+      run: echo ::set-output name=VER::${GITHUB_REF/refs\/tags\//}
+    
+    - name: Run a one-line script 4
+      run: echo "version=$VER"
