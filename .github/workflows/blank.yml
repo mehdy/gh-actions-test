@@ -27,3 +27,6 @@ jobs:
     
     - name: Run a one-line script 4
       run: echo "version=$VERSION"
+    
+    - name: Echo github.event
+      run: echo ${{ github.event }}
